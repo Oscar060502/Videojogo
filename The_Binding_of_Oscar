@@ -78,8 +78,5 @@ if(x<15){
 if (keyPressed == false){
   image(normal, x, y);
 }
-    fill(0);
-    textSize(20);
-    text("No recuerdo nada", 170, height/2);
  
 }
