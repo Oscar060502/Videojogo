@@ -1,0 +1,85 @@
+float x;
+float y;
+boolean change = false;
+boolean changeSide = false;
+boolean changeBelow = false;
+PImage normal;
+PImage arriba;
+PImage izq;
+PImage der;
+PImage backGround;
+
+void setup() {
+  size (600, 600);
+  x = width/2;
+  y = height/2;
+  normal = loadImage("down.png");
+  arriba = loadImage("up.png");
+  izq= loadImage("left.png");
+  der = loadImage("rigth.png");
+  backGround = loadImage("Inicio.png");
+  backGround.resize(600,600);
+  normal.resize(120,120);
+  arriba.resize(120,120);
+  izq.resize(120,120);
+  der.resize(120,120);
+ 
+}
+
+void draw() {
+  background(backGround);
+  if(change == true){
+    room();
+  }else{
+  background(backGround);
+        if(changeBelow == true){
+        womb();
+      }
+  }
+  if(changeSide == true){
+    alcantarilla();
+  }
+  if(keyPressed){
+  if(key =='w'){
+    y-=2;
+    image(arriba, x, y);
+  }else if(key=='s'){
+    y+=2;
+    image(normal, x, y);
+  }
+   if(key =='a'){
+    x-=2;
+    image(izq, x, y);
+  }else if(key=='d'){
+    x+=2;
+    image(der, x, y);
+  }
+}
+
+if(x<15){
+    x+=5;
+    changeSide = true;
+  }
+  if(x>500){
+    x-=5;
+    changeSide = false;
+  }
+  
+   if(y<-10){
+    y+=5;
+   change = true;
+   changeBelow = false;
+  }
+  if(y>420){
+    y-=5;
+    change = false;
+    changeBelow = true;
+  }
+if (keyPressed == false){
+  image(normal, x, y);
+}
+    fill(0);
+    textSize(20);
+    text("No recuerdo nada", 170, height/2);
+ 
+}
